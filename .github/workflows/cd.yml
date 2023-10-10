@@ -42,3 +42,4 @@ jobs:
             docker push gcr.io/seppzer0/ndvwa
           else
             echo "[ * ] Docker image upload skipped."
+          fi
