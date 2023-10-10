@@ -1,11 +1,12 @@
 # nDVWA — a nginx-served DVWA
 
-nDVWA is a compact Dockerized solution for deploying DVWA with nginx.<br>
+nDVWA is a compact Dockerized solution for deploying DVWA with nginx.
+
 Everything is kept in a single container: nginx is pulled as a base image, and DVWA is downloaded directly from it's official git repository.
 
-Additionally, this application offers a few extra SSH configurations between the Docker container and it's host machine.<br>
-The SSH connection is established using internal Docker network (which is evident by `docker0` interface and `172.17.0.1` default host address usage in the codebase).<br>
-You can opt-out of these configurations via a prompt when starting up the container.
+Additionally, this application offers a few extra SSH configurations between the Docker container and it's host machine.
+
+The SSH connection with port knocking protection is established using internal Docker network (which is evident by `docker0` interface and `172.17.0.1` default host address usage in the codebase). You can opt-out of these configurations via a prompt when starting up the container.
 
 This app was a part of an academic study and had a DoD (Definition-of-Done). The details are presented below.
 

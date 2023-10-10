@@ -8,7 +8,7 @@ sleep 1
 
 # prompt to either proceed with SSH configurations or jump into shell
 printf "\n\n"
-read -p "[ ? ] Proceed with tasks 3-4? [yes/no] " yn
+read -p "[ ? ] Proceed with SSH configurations? [yes/no] " yn
 case $yn in 
   yes ) 
       # DoD: Establishing Reverse Tunneling to SSH
