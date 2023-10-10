@@ -1,0 +1,40 @@
+name: Docker Image CD
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+      inputs:
+        skip_upload:
+          description: "Select whether the upload process should be skipped"
+          required: true
+          default: "false"
+          type: choice
+          options:
+          - "true"
+          - "false"
+
+permissions:
+  contents: write
+
+env:
+  SKIP_UPLOAD: ${{ github.event.inputs.skip_upload || false }}
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Login
+        run: echo $GITHUB_TOKEN | docker login ghcr.io -u seppzer0 --password-stdin
+      - name: Build
+        run: docker build . -t gcr.io/seppzer0/ndvwa
+      - name: Publish
+        run: |
+          if [ "${{ env.IS_PRERELEASE }}" == "false"  ]; then
+            docker push gcr.io/seppzer0/ndvwa
+          else
+            echo "[ * ] Docker image upload skipped."
