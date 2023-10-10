@@ -75,7 +75,7 @@ docker build . -t ndvwa
 Alternatively, you can download a pre-built image from repository's registry:
 
 ```sh
-docker pull gcr.io/seppzer0/ndvwa
+docker pull ghcr.io/seppzer0/ndvwa
 ```
 
 ### 2. Create a Docker container
