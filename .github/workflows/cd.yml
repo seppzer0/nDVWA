@@ -15,8 +15,7 @@ on:
           - "true"
           - "false"
 
-permissions:
-  contents: write
+permissions: write-all
 
 env:
   SKIP_UPLOAD: ${{ github.event.inputs.skip_upload || false }}
