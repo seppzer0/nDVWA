@@ -38,7 +38,7 @@ jobs:
         run: docker build . -t gcr.io/seppzer0/ndvwa
       - name: Publish
         run: |
-          if [ "${{ env.IS_PRERELEASE }}" == "false"  ]; then
+          if [ "${{ env.SKIP_UPLOAD }}" == "false"  ]; then
             docker push gcr.io/seppzer0/ndvwa
           else
             echo "[ * ] Docker image upload skipped."
