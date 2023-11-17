@@ -1,4 +1,4 @@
-# nDVWA — a nginx-served DVWA
+# nDVWA
 
 nDVWA is a compact Dockerized solution for deploying DVWA with nginx.
 
@@ -12,7 +12,7 @@ This app was a part of an academic study and had a DoD (Definition-of-Done). The
 
 ## Contents
 
-- [nDVWA — a nginx-served DVWA](#ndvwa--a-nginx-served-dvwa)
+- [nDVWA](#ndvwa)
   - [Contents](#contents)
   - [**Disclaimer**](#disclaimer)
   - [DoD](#dod)
