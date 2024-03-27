@@ -1,9 +1,8 @@
-# DoD: Installing Nginx with Docker
-FROM nginx:1.25.2-bookworm
+FROM nginx:1.25.4-bookworm
 EXPOSE 80
 EXPOSE 22
 
-# DoD: Deploying DVWA on Nginx
+# Step: Deploying DVWA on Nginx
 # copy config files into container
 COPY configs/dvwa.conf /etc/nginx/sites-available/default
 COPY configs/nginx.conf /etc/nginx/nginx.conf
@@ -25,12 +24,13 @@ RUN apt-get update && \
         openssh-server \
         openssh-client \
         sshpass \
-        knockd
+        knockd && \
+    apt-get autoremove -y
 # install a specific version of PHP
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
     echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list && \
-    apt update && \
-    apt -y install php7.4-fpm php7.4-mysqli
+    apt-get update && \
+    apt-get install -y php8.3-fpm php8.3-mysqli
 # run configurations
 RUN mkdir -p /etc/nginx/sites-available && \
     mkdir -p /etc/nginx/sites-enabled && \
@@ -48,6 +48,6 @@ RUN mkdir -p /etc/nginx/sites-available && \
     # firewall setting for nginx
     ufw allow 80,443/tcp
 
-# setup entrypoint (technically CMD)
+# setup entrypoint CMD
 COPY entrypoint.sh /entrypoint.sh
 CMD [ "bash", "/entrypoint.sh" ]
