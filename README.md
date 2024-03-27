@@ -15,6 +15,7 @@ This app consist of several key steps. The details are presented below.
 - [nDVWA](#ndvwa)
   - [Contents](#contents)
   - [**Important**](#important)
+  - [Key Steps](#key-steps)
   - [How To Use](#how-to-use)
     - [1. Build (or download) the Docker image](#1-build-or-download-the-docker-image)
     - [2. Create a Docker container](#2-create-a-docker-container)
@@ -34,6 +35,15 @@ This app consist of several key steps. The details are presented below.
 
 > [!NOTE]
 > And just in case, run a `sudo iptables -L > ~/default_iptables.txt` before launching the app. That way you'll have a reference to restore your iptables rules if required.
+
+## Key Steps
+
+The whole function of the app can be broken down into the following steps:
+
+1. installing Nginx with Docker;
+2. deploying DVWA on Nginx;
+3. establishing reverse tunneling to SSH (optional);
+4. protecting SSH from Nmap scanning with port knocking protection (optional).
 
 ## How To Use
 

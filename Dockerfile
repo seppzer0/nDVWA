@@ -1,8 +1,9 @@
+# step: installing Nginx with Docker
 FROM nginx:1.25.4-bookworm
 EXPOSE 80
 EXPOSE 22
 
-# Step: Deploying DVWA on Nginx
+# step: deploying DVWA on Nginx
 # copy config files into container
 COPY configs/dvwa.conf /etc/nginx/sites-available/default
 COPY configs/nginx.conf /etc/nginx/nginx.conf

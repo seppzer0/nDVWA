@@ -14,7 +14,7 @@ printf "\n\n"
 read -p "[ ? ] Proceed with SSH configurations? [yes/no] " yn
 case $yn in
   yes )
-      # Step: Establishing Reverse Tunneling to SSH
+      # step: establishing reverse tunneling to SSH
       printf "\n\n== Establishing Reverse Tunneling to SSH ==\n"
       # ask for host's credentials, which will be required for sudo operations
       printf "\n[ * ] Please enter the following information from you host environment.\n"
@@ -30,24 +30,24 @@ case $yn in
       printf "[ * ] Opening SSH connection. When ready, \"exit\" it to proceed with port knocking protection setup.\n\n"
       ssh -p 22 ${USER}@${IP}
 
-      # Step: Protecting SSH from Nmap Scanning (port knocking protection)
+      # step: protecting SSH from Nmap scanning with port knocking protection
       printf "\n\n== Protecting SSH from Nmap Scanning ==\n"
       printf "\n[ * ] Please enter the following information from you host environment.\n"
       read -p "    - Full path to this repository: " RPATH
       printf "\n"
       printf "\n[ * ] Checking that SSH port is currently open using NMAP.\n\n"
-      nmap -p 22 172.17.0.1
+      nmap -p 22 ${IP}
       printf "\n[ * ] Configuring knockd service on the host machine (via SSH).\n\n"
       ssh -p 22 ${USER}@${IP} -t "cd ${RPATH} && echo ${PASS} | sudo -S bash knockd_setup.sh"
       sleep 1
       printf "\n[ * ] Attemting to scan the SSH port and connect to the SSH server with knockd service running.\n\n"
-      nmap -p 22 172.17.0.1
+      nmap -p 22 ${IP}
       ssh -p 22 ${USER}@${IP}
       printf "\n[ * ] Executing magic knock-knock sequence and actually connecting to the SSH server. When ready, \"exit\" it to proceed.\n\n"
-      knock -v 172.17.0.1 20001 20002 20003 -d 500
+      knock -v ${IP} 20001 20002 20003 -d 500
       ssh -p 22 ${USER}@${IP}
       printf "\n[ * ] Restoring iptables rules on the host machine.\n\n"
-      knock -v 172.17.0.1 20001 20002 20003 -d 500
+      knock -v ${IP} 20001 20002 20003 -d 500
       ssh -p 22 ${USER}@${IP} -t "echo ${PASS} | sudo -S iptables -F DOCKER && sudo -S iptables -F INPUT && sudo -S service knockd stop"
       ;;
   no )
