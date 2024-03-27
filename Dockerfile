@@ -33,9 +33,7 @@ RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
     apt-get update && \
     apt-get install -y php8.3-fpm php8.3-mysqli
 # run configurations
-RUN mkdir -p /etc/nginx/sites-available && \
-    mkdir -p /etc/nginx/sites-enabled && \
-    mkdir -p /var/www/html && \
+RUN mkdir -p /etc/nginx/sites-available /etc/nginx/sites-enabled /var/www/html && \
     # prepare DVWA files
     git clone --depth 1 https://github.com/digininja/DVWA.git /var/www/html/dvwa && \
     chmod 777 -R /var/www/html/dvwa && \
