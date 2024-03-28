@@ -21,6 +21,7 @@ This app consist of several key steps. The details are presented below.
     - [2. Create a Docker container](#2-create-a-docker-container)
     - [3. Check the deployed DVWA instance via web-browser](#3-check-the-deployed-dvwa-instance-via-web-browser)
     - [4. Follow the prompts in Docker container](#4-follow-the-prompts-in-docker-container)
+  - [License](#license)
 
 ## **Important**
 
@@ -86,3 +87,7 @@ On a Debian-based machine:
 - install `openssh-server` package;
 - append `GatewayPorts yes` and `AllowTcpForwarding yes` lines into `/etc/ssh/sshd_config` file;
 - restart ssh service.
+
+## License
+
+[MIT](LICENSE.md)
