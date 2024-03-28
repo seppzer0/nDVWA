@@ -19,7 +19,7 @@ This app consist of several key steps. The details are presented below.
   - [How To Use](#how-to-use)
     - [1. Build (or download) the Docker image](#1-build-or-download-the-docker-image)
     - [2. Create a Docker container](#2-create-a-docker-container)
-    - [3. Check deployed DVWA via web-browser](#3-check-deployed-dvwa-via-web-browser)
+    - [3. Check the deployed DVWA instance via web-browser](#3-check-the-deployed-dvwa-instance-via-web-browser)
     - [4. Follow the prompts in Docker container](#4-follow-the-prompts-in-docker-container)
 
 ## **Important**
@@ -69,7 +69,7 @@ To create a container, run:
 docker run --rm -it -p 80:80 ndvwa
 ```
 
-### 3. Check deployed DVWA via web-browser
+### 3. Check the deployed DVWA instance via web-browser
 
 Using a web-browser, enter `0.0.0.0:80` URL.<br>
 When asked for credentials for the first time, use `dvwa` for both login and password.<br>
