@@ -79,7 +79,8 @@ Then, using UI, create a new database. When asked for credentials again, use `ad
 
 Once the container is launched, you will be prompted whether to proceed with SSH configurations or just directly jump into Bash shell.
 
-Keep in mind that in order to establish an SSH connection between a container and a host machine, you need to setup an SSH server on the host machine first.<br>
+Keep in mind that in order to establish an SSH connection between a container and a host machine, you need to setup an SSH server on the host machine first.
+
 On a Debian-based machine:
 
 - install `openssh-server` package;
